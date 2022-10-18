@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookingApp</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="header__nav">
+            <a href="index.html"><img class="header__img" src="recursos/logo-sunset.png" alt="logo-sunset"></a>
+            <ul class="header__nav-lista">
+                <li class="header__nav-lista-item"><a href="#">Reservar una cabaña</a></li>
+                <li class="header__nav-lista-item"><a href="#">Spa</a></li>
+                <li class="header__nav-lista-item"><a href="#">Mis Reservas</a></li>
+            </ul>
+            <a class="header__ingresar" href="">Ingresar</a>
+        </nav>
+    </header>
+
+    <main class="main__reserva">
+        <h1 class="main__reserva-titulo">Reservar una cabaña</h1>
+
+        <section class="main__reserva-buscador" id="reservaBuscador">
+            <article class="main__reserva-buscador-seccion1">
+                <label for="ingreso">Ingreso</label>
+                <input class="main__reserva-buscador-seccion1-entrada" type="date">
+                <label for="egreso">Egreso</label>
+                <input class="main__reserva-buscador-seccion1-entrada" type="date">
+            </article>
+            <div class="main__reserva-buscador-divisor"></div>
+            <article class="main__reserva-buscador-seccion2">
+                <label for="cantAdultos">Cantidad de adultos</label>
+                <input class="main__reserva-buscador-seccion2-entrada" type="text">
+                <label for="cantAdultos">Cantidad de niños</label>
+                <input class="main__reserva-buscador-seccion2-entrada" type="text">
+                <button class="main__reserva-buscador-seccion2-boton">Buscar</button>
+            </article>
+        </section>
+        <section class="main__reserva-visor" id="reservaVisor">
+
+        </section>
+    </main>
+
+    <footer>
+        <section class="footer__mapa">
+            <h2 class="footer__mapa-titulo">Mapa del sitio</h2>
+            <nav class="footer__mapa-nav">
+                <ul class="footer__mapa-nav-lista">
+                    <li class="footer__mapa-nav-lista-item"><a href="#">Reservar una cabaña</a></li>
+                    <li class="footer__mapa-nav-lista-item"><a href="#">Spa</a></li>
+                    <li class="footer__mapa-nav-lista-item"><a href="#">Mis Reservas</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section class="footer__contacto">
+            <h2 class="footer__contacto-titulo">Contacto</h2>
+            <ul class="footer__contacto-lista">
+                <li class="footer__contacto-lista-item">Teléfono: 0123-4567889</li>
+                <li class="footer__contacto-lista-item">WhatsApp: 0123-4567889</li>
+            </ul>
+        </section>
+
+        <section class="footer__suscribe">
+            <h2 class="footer__suscribe-titulo">Suscribite</h2>
+            <form class="footer__suscribe-form" action="post">
+                <div>
+                    <label for="mail">E-mail</label>
+                    <input class="footer__suscribe-form-entrada" type="email">
+                </div>
+                <button class="footer__suscribe-form-boton" type="submit">Enviar</button>
+            </form>
+        </section>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

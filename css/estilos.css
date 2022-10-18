@@ -1,0 +1,122 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  font-family: 'Barlow', sans-serif; }
+
+header {
+  border-bottom: #cfcfcf solid 1px; }
+  header .header__img {
+    width: 230px; }
+  header .header__nav {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-image: linear-gradient(to top, #f0f0f0, white);
+    justify-content: space-between;
+    font-size: large; }
+    header .header__nav-lista {
+      list-style: none;
+      display: flex; }
+      header .header__nav-lista-item a {
+        text-decoration: none;
+        color: black;
+        margin: 16px;
+        padding: 12px; }
+      header .header__nav-lista-item a:hover {
+        background-color: #d33a3a;
+        color: white;
+        border-radius: 5px; }
+  header .header__ingresar {
+    margin: 16px;
+    padding: 12px;
+    border: #d33a3a solid 1px;
+    text-decoration: none;
+    color: #d33a3a;
+    border-radius: 5px;
+    font-weight: bold; }
+    header .header__ingresar:hover {
+      background-color: #d33a3a;
+      color: white; }
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-image: linear-gradient(to bottom, #f0f0f0, white);
+  border-top: #cfcfcf solid 1px;
+  padding: 16px; }
+  footer .footer__mapa-titulo {
+    margin-bottom: 16px;
+    text-align: center; }
+  footer .footer__mapa-nav-lista {
+    text-align: center;
+    list-style: none;
+    font-family: 'Barlow', sans-serif; }
+    footer .footer__mapa-nav-lista-item {
+      margin-top: 7px; }
+    footer .footer__mapa-nav-lista-item a {
+      text-decoration: none;
+      color: black; }
+  footer .footer__contacto-titulo {
+    margin-bottom: 16px;
+    text-align: center; }
+  footer .footer__contacto-lista {
+    list-style: none;
+    text-align: center; }
+    footer .footer__contacto-lista-item {
+      margin-top: 7px; }
+  footer .footer__suscribe-titulo {
+    margin-bottom: 16px;
+    text-align: center; }
+  footer .footer__suscribe-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    footer .footer__suscribe-form-boton {
+      width: 200px;
+      height: 30px;
+      background-color: #d33a3a;
+      color: white;
+      border: #d33a3a solid 1px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: large;
+      margin-top: 7px; }
+
+.main__reserva {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 350px; }
+  .main__reserva-titulo {
+    margin: 16px; }
+  .main__reserva-buscador {
+    width: 700px;
+    border: #adadad solid 1px;
+    border-radius: 10px;
+    padding: 16px; }
+    .main__reserva-buscador-seccion1 {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .main__reserva-buscador-seccion1-entrada {
+        width: 200px;
+        height: 25px;
+        margin: 16px; }
+    .main__reserva-buscador-seccion2 {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .main__reserva-buscador-seccion2-entrada {
+        width: 50px;
+        height: 25px;
+        margin: 16px; }
+      .main__reserva-buscador-seccion2-boton {
+        width: 100px;
+        height: 30px;
+        background-color: #d33a3a;
+        color: white;
+        border: #d33a3a solid 1px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: large; }
