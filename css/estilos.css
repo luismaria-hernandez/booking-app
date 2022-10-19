@@ -23,19 +23,19 @@ header {
         margin: 16px;
         padding: 12px; }
       header .header__nav-lista-item a:hover {
-        background-color: #d33a3a;
+        background-color: #f16767;
         color: white;
         border-radius: 5px; }
   header .header__ingresar {
     margin: 16px;
     padding: 12px;
-    border: #d33a3a solid 1px;
+    border: #f16767 solid 1px;
     text-decoration: none;
-    color: #d33a3a;
+    color: #f16767;
     border-radius: 5px;
     font-weight: bold; }
     header .header__ingresar:hover {
-      background-color: #d33a3a;
+      background-color: #f16767;
       color: white; }
 
 footer {
@@ -57,6 +57,8 @@ footer {
     footer .footer__mapa-nav-lista-item a {
       text-decoration: none;
       color: black; }
+    footer .footer__mapa-nav-lista-item a:hover {
+      color: #f16767; }
   footer .footer__contacto-titulo {
     margin-bottom: 16px;
     text-align: center; }
@@ -72,16 +74,23 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center; }
+    footer .footer__suscribe-form-entrada {
+      height: 30px;
+      border: #cccccc solid 1px;
+      border-radius: 5px; }
     footer .footer__suscribe-form-boton {
       width: 200px;
       height: 30px;
-      background-color: #d33a3a;
+      background-color: #f16767;
       color: white;
-      border: #d33a3a solid 1px;
+      border: #f16767 solid 1px;
       border-radius: 5px;
       font-weight: bold;
       font-size: large;
       margin-top: 7px; }
+    footer .footer__suscribe-form-boton:hover {
+      background-color: #b44b4b;
+      border: #b44b4b solid 1px; }
 
 .main__reserva {
   display: flex;
@@ -92,31 +101,39 @@ footer {
     margin: 16px; }
   .main__reserva-buscador {
     width: 700px;
-    border: #adadad solid 1px;
+    border: #cccccc solid 1px;
     border-radius: 10px;
-    padding: 16px; }
+    padding: 16px;
+    box-shadow: 2px 2px 2px 1px #858585; }
     .main__reserva-buscador-seccion1 {
       display: flex;
       justify-content: center;
       align-items: center; }
       .main__reserva-buscador-seccion1-entrada {
         width: 200px;
-        height: 25px;
-        margin: 16px; }
+        height: 30px;
+        margin: 16px;
+        border: #cccccc solid 1px;
+        border-radius: 5px; }
     .main__reserva-buscador-seccion2 {
       display: flex;
       justify-content: center;
       align-items: center; }
       .main__reserva-buscador-seccion2-entrada {
         width: 50px;
-        height: 25px;
-        margin: 16px; }
+        height: 30px;
+        margin: 16px;
+        border: #cccccc solid 1px;
+        border-radius: 5px; }
       .main__reserva-buscador-seccion2-boton {
         width: 100px;
         height: 30px;
-        background-color: #d33a3a;
+        background-color: #f16767;
         color: white;
-        border: #d33a3a solid 1px;
+        border: #f16767 solid 1px;
         border-radius: 5px;
         font-weight: bold;
         font-size: large; }
+      .main__reserva-buscador-seccion2-boton:hover {
+        background-color: #b44b4b;
+        border: #b44b4b solid 1px; }

@@ -36,7 +36,9 @@ footer {
                         color: $color-navegacion;
                     }
 
-                    
+                    &-item a:hover{
+                        color:$color-boton-navegacion;
+                    }
                 }
             }
         }
@@ -68,6 +70,11 @@ footer {
                 flex-direction: column;
                 align-items: center;
                 
+                &-entrada{
+                    height:$alto-entrada ;
+                    border: $color-borde-buscador solid 1px;
+                    border-radius: 5px;
+                }
 
                 &-boton{
                     width:200px;
@@ -79,6 +86,11 @@ footer {
                     font-weight: bold;
                     font-size: large;
                     margin-top: $margen-opciones;
+                }
+
+                &-boton:hover {
+                    background-color: $color-boton-navegacion2;
+                    border: $color-boton-navegacion2 solid 1px;
                 }
             }
         }
