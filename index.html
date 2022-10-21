@@ -31,32 +31,23 @@
         <section class="main__reserva-buscador" id="reservaBuscador">
             <article class="main__reserva-buscador-seccion1">
                 <label for="ingreso">Ingreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" type="date">
+                <input class="main__reserva-buscador-seccion1-entrada" id="ingreso" type="date">
                 <label for="egreso">Egreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" type="date">
+                <input class="main__reserva-buscador-seccion1-entrada" id="egreso" type="date">
             </article>
             <div class="main__reserva-buscador-divisor"></div>
             <article class="main__reserva-buscador-seccion2">
-                <label for="cantAdultos">Cantidad de adultos</label>
-                <input class="main__reserva-buscador-seccion2-entrada" type="text">
-                <label for="cantAdultos">Cantidad de niños</label>
-                <input class="main__reserva-buscador-seccion2-entrada" type="text">
-                <button class="main__reserva-buscador-seccion2-boton">Buscar</button>
+                <label for="adultos">Cantidad de adultos</label>
+                <input class="main__reserva-buscador-seccion2-entrada" type="text" id="adultos">
+                <label for="ninos">Cantidad de niños</label>
+                <input class="main__reserva-buscador-seccion2-entrada" type="text" id="ninos">
+                <button class="main__reserva-buscador-seccion2-boton" id="buscar">Buscar</button>
             </article>
         </section>
+        <h3 class="main__reserva-visor-titulo">Resultados de la búsqueda:</h3>
         <section class="main__reserva-visor" id="reservaVisor">
-            <h3 class="main__reserva-visor-titulo">Resultados de la búsqueda:</h3>
-            <article class="main__reserva-visor-tarjeta">
-                <img class="main__reserva-visor-tarjeta-img" src="recursos/cabaña1.jpg">
-                <table class="main__reserva-visor-tarjeta-tabla">
-                    <thead>
-                        <th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Acciones</th>
-                    </thead>
-                    <tbody>
-                        <td>12/12/12</td><td>12/12/12</td><td>2</td><td>2</td><td><button class="main__reserva-visor-tarjeta-tabla-botonR">Reservar</button><button class="main__reserva-visor-tarjeta-tabla-botonC"">Cancelar</button></td>
-                    </tbody>
-                </table>
-            </article>
+            
+            
         </section>
     </main>
 
