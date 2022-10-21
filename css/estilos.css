@@ -177,13 +177,3 @@ footer {
       .main__reserva-visor-tarjeta-tabla-botonR:hover {
         background-color: #b44b4b;
         border: #b44b4b solid 1px; }
-      .main__reserva-visor-tarjeta-tabla-botonC {
-        width: 100px;
-        height: 30px;
-        background-color: white;
-        color: #f16767;
-        border: #f16767 solid 1px;
-        border-radius: 5px;
-        font-weight: bold;
-        font-size: large;
-        margin-left: 7px; }

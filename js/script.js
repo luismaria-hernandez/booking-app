@@ -5,6 +5,7 @@ let contenedor = document.getElementById('reservaVisor');
 
 const cabanas = [
     {
+        id:1,
         src:'recursos/cabaña1.jpg',
         nombre:'Los Osos',
         ingreso: '2022-10-3',
@@ -13,6 +14,7 @@ const cabanas = [
         ninos: 2
     },
     {
+        id:2,
         src:'recursos/cabaña2.jpg',
         nombre:'Los Pumas',
         ingreso:'2022-10-10',
@@ -21,6 +23,7 @@ const cabanas = [
         ninos: 0
     },
     {
+        id:3,
         src:'recursos/cabaña3.jpg',
         nombre:'Los Álamos',
         ingreso: '2022-10-17',
@@ -29,6 +32,7 @@ const cabanas = [
         ninos: 4
     },
     {
+        id:4,
         src:'recursos/cabaña4.jpg',
         nombre:'Los vados',
         ingreso: '2022-10-3',
@@ -58,24 +62,25 @@ btnBuscar.addEventListener('click',()=>{
         }
     });
 
-    console.log(encontrado);
-
     if(encontrado.length!=0){
 
         encontrado.forEach(e=>{
+
+            const card = `<article class="main__reserva-visor-tarjeta">
+            <img class="main__reserva-visor-tarjeta-img" src="${e.src}">
+            <table class="main__reserva-visor-tarjeta-tabla">
+                <thead>
+                    <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Acciones</th>
+                </thead>
+                <tbody>
+                    <td>${e.nombre}</td><td>${e.ingreso}</td><td>${e.egreso}</td><td>${e.adultos}</td><td>${e.ninos}</td><td><button class="main__reserva-visor-tarjeta-tabla-botonR agregar-carrito" id="boton${e.id}">Reservar</button></td>
+                </tbody>
+            </table>
+        </article>`;
             
-            contenedor.innerHTML += `<article class="main__reserva-visor-tarjeta">
-                                        <img class="main__reserva-visor-tarjeta-img" src="${e.src}">
-                                        <table class="main__reserva-visor-tarjeta-tabla">
-                                            <thead>
-                                                <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Acciones</th>
-                                            </thead>
-                                            <tbody>
-                                                <td>${e.nombre}</td><td>${e.ingreso}</td><td>${e.egreso}</td><td>${e.adultos}</td><td>${e.ninos}</td><td><button class="main__reserva-visor-tarjeta-tabla-botonR">Reservar</button><button class="main__reserva-visor-tarjeta-tabla-botonC"">Cancelar</button></td>
-                                            </tbody>
-                                        </table>
-                                    </article>`;
+            contenedor.innerHTML += card;
         })
+        
     }
     else{
         contenedor.innerHTML += `<p class="main__reserva-visor-noResult">No se han encontrado resultados</p>`;

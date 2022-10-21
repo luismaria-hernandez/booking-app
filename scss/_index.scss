@@ -108,18 +108,6 @@
                     background-color: $color-boton-navegacion2;
                     border: $color-boton-navegacion2 solid 1px; 
                 }
-
-                &-botonC{
-                    width:100px;
-                    height: 30px;
-                    background-color: $color-navegacion2;
-                    color: $color-boton-navegacion;
-                    border: $color-boton-navegacion solid 1px;
-                    border-radius: 5px;
-                    font-weight: bold;
-                    font-size: large;
-                    margin-left: 7px;
-                }
             }
         }
     }  
