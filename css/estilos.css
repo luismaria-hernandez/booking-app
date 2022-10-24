@@ -177,3 +177,44 @@ footer {
       .main__reserva-visor-tarjeta-tabla-botonR:hover {
         background-color: #b44b4b;
         border: #b44b4b solid 1px; }
+
+.main__login {
+  display: flex;
+  justify-content: center; }
+  .main__login-log {
+    width: 350px;
+    height: 300px;
+    border: #cccccc solid 1px;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px #858585; }
+    .main__login-log-titulo {
+      text-align: center; }
+    .main__login-log-seccion {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      margin-top: 20px; }
+      .main__login-log-seccion-entrada {
+        width: 100%;
+        margin-top: 5px;
+        height: 30px;
+        border: #cccccc solid 1px;
+        border-radius: 5px; }
+      .main__login-log-seccion-small {
+        margin-bottom: 20px;
+        margin-top: 5px; }
+    .main__login-log-boton {
+      width: 100%;
+      background-color: #f16767;
+      border: #f16767 solid 1px;
+      height: 30px;
+      color: white;
+      font-weight: bold;
+      font-size: large;
+      border-radius: 5px; }
+    .main__login-log-boton:hover {
+      background-color: #b44b4b;
+      border: #b44b4b solid 1px; }

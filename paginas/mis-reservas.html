@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar una cabaña</title>
+    <title>Mis reservas</title>
     <!--CSS-->
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,41 +15,17 @@
 <body>
     <header>
         <nav class="header__nav">
-            <a href="index.html"><img class="header__img" src="recursos/logo-sunset.png" alt="logo-sunset"></a>
+            <a href="index.html"><img class="header__img" src="../recursos/logo-sunset.png" alt="logo-sunset"></a>
             <ul class="header__nav-lista">
-                <li class="header__nav-lista-item"><a href="#">Reservar una cabaña</a></li>
-                <li class="header__nav-lista-item"><a href="paginas/mis-reservas.html">Mis Reservas</a></li>
+                <li class="header__nav-lista-item"><a href="../index.html">Reservar una cabaña</a></li>
+                <li class="header__nav-lista-item"><a href="#">Mis Reservas</a></li>
             </ul>
             <a class="header__ingresar" href="paginas/login.html">Ingresar</a>
         </nav>
     </header>
-
-    <main class="main__reserva">
-        <h1 class="main__reserva-titulo">Reservar una cabaña</h1>
-
-        <section class="main__reserva-buscador" id="reservaBuscador">
-            <article class="main__reserva-buscador-seccion1">
-                <label for="ingreso">Ingreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" id="ingreso" type="date">
-                <label for="egreso">Egreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" id="egreso" type="date">
-            </article>
-            <div class="main__reserva-buscador-divisor"></div>
-            <article class="main__reserva-buscador-seccion2">
-                <label for="adultos">Cantidad de adultos</label>
-                <input class="main__reserva-buscador-seccion2-entrada" type="text" id="adultos">
-                <label for="ninos">Cantidad de niños</label>
-                <input class="main__reserva-buscador-seccion2-entrada" type="text" id="ninos">
-                <button class="main__reserva-buscador-seccion2-boton" id="buscar">Buscar</button>
-            </article>
-        </section>
-        <h3 class="main__reserva-visor-titulo">Resultados de la búsqueda:</h3>
-        <section class="main__reserva-visor" id="reservaVisor">
-            
-            
-        </section>
+    <main class="main__misreservas"> 
+        <h1>Mis reservas</h1>
     </main>
-
     <footer>
         <section class="footer__mapa">
             <h2 class="footer__mapa-titulo">Mapa del sitio</h2>
@@ -80,7 +56,7 @@
             </form>
         </section>
     </footer>
-
-    <script src="js/script.js"></script>
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>
