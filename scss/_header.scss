@@ -35,37 +35,42 @@ header {
                     border-radius: 5px;
                 }
             }
-        }
-        &__ingresar{
-            margin:16px ;
-            padding: 12px;
-            border: $color-boton-navegacion solid 1px;
-            text-decoration: none;
-            color: $color-boton-navegacion;
-            border-radius: 5px;
-            font-weight: bold;
+            &-areausuario {
 
-            &:hover{
-                background-color: $color-boton-navegacion;
-                color: $color-navegacion2;
+                &-nav{
+                    &-lista{
+                        list-style: none;
+                        display: flex;
+                        
+                        &-item {
+                            margin-right: 16px;
+                        }
+
+                        &-item a {
+                            text-decoration: none;
+                            background-color: $color-boton-navegacion;
+                            padding: 12px;
+                            border-radius: 5px;
+                            color: $color-navegacion2;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                &-ingresar{
+                    margin:16px ;
+                    padding: 12px;
+                    border: $color-boton-navegacion solid 1px;
+                    text-decoration: none;
+                    color: $color-boton-navegacion;
+                    border-radius: 5px;
+                    font-weight: bold;
+        
+                    &:hover{
+                        background-color: $color-boton-navegacion;
+                        color: $color-navegacion2;
+                    }
+                }
             }
-        }
+        }  
     }
-}
-
-
-
-
-
-
-
-
-
-
-.header__lista {
-    
-}
-
-header .header__lista .header__item a {
-    
 }

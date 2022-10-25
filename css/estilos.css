@@ -26,17 +26,29 @@ header {
         background-color: #f16767;
         color: white;
         border-radius: 5px; }
-  header .header__ingresar {
-    margin: 16px;
-    padding: 12px;
-    border: #f16767 solid 1px;
-    text-decoration: none;
-    color: #f16767;
-    border-radius: 5px;
-    font-weight: bold; }
-    header .header__ingresar:hover {
-      background-color: #f16767;
-      color: white; }
+    header .header__nav-areausuario-nav-lista {
+      list-style: none;
+      display: flex; }
+      header .header__nav-areausuario-nav-lista-item {
+        margin-right: 16px; }
+      header .header__nav-areausuario-nav-lista-item a {
+        text-decoration: none;
+        background-color: #f16767;
+        padding: 12px;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold; }
+    header .header__nav-areausuario-ingresar {
+      margin: 16px;
+      padding: 12px;
+      border: #f16767 solid 1px;
+      text-decoration: none;
+      color: #f16767;
+      border-radius: 5px;
+      font-weight: bold; }
+      header .header__nav-areausuario-ingresar:hover {
+        background-color: #f16767;
+        color: white; }
 
 footer {
   display: flex;
@@ -218,3 +230,8 @@ footer {
     .main__login-log-boton:hover {
       background-color: #b44b4b;
       border: #b44b4b solid 1px; }
+
+.main__misreservas {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }

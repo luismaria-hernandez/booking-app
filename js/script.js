@@ -1,6 +1,9 @@
 let btnBuscar = document.getElementById("buscar");
 let contenedor = document.getElementById("reservaVisor");
 let btnIngresar = document.getElementById("ingresar");
+let areaUsuario = document.getElementById("areaUsuario");
+let misReservas = document.getElementById("misReservas");
+
 
 class Reservas {
   constructor(id, src, nombre, ingreso, egreso, adultos, ninos) {
@@ -123,6 +126,31 @@ function guardarReserva(idReserva) {
 
 
 }
+
+function usuarioLoggeado(){
+
+    let mail = sessionStorage.getItem('mail');
+
+    if(areaUsuario != null){
+
+        if(mail != null){
+            areaUsuario.innerHTML = `<nav class="header__nav-areausuario-nav">
+            <ul class="header__nav-areausuario-nav-lista">
+                <li class="header__nav-areausuario-nav-lista-item"><a href="#">${mail}</a></li>
+                <li class="header__nav-areausuario-nav-lista-item"><a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+            </ul>
+        </nav>`;
+
+        }else {
+            areaUsuario.innerHTML = `<a class="header__nav-areausuario-ingresar" href="paginas/login.html">Ingresar</a>`;
+        }
+    }
+}
+
+
+
+window.onload = usuarioLoggeado();
+window.onload = misReservas();
 
 if (btnBuscar != null) {
   btnBuscar.addEventListener("click", () => {
