@@ -1,9 +1,12 @@
+//ELEMENTOS HTML
+
 let btnBuscar = document.getElementById("buscar");
 let contenedor = document.getElementById("reservaVisor");
 let btnIngresar = document.getElementById("ingresar");
 let areaUsuario = document.getElementById("areaUsuario");
 let misReservas = document.getElementById("misReservas");
 
+//CLASES
 
 class Reservas {
   constructor(id, src, nombre, ingreso, egreso, adultos, ninos) {
@@ -56,6 +59,8 @@ class Reservas {
   }
 }
 
+//VARIABLES
+
 const cabanas = [
   {
     id: 1,
@@ -98,18 +103,21 @@ const carrito = [];
 
 const reservas = [];
 
+//FUNCIONES
+
 function comprobarUsuario(){
 
-    let user = sessionStorage.getItem('usuario');
-    let control = false;
+    let mail = sessionStorage.getItem('mail');
+    let control = true;
 
-    if(user == null){
+    if(mail == null){
         alert('Para poder reservar tiene que ingresar al sistema');
         control = false;
 
         location.href ="paginas/login.html";
     }
 
+    return control;
 }
 
 function guardarReserva(idReserva) {
@@ -122,8 +130,9 @@ function guardarReserva(idReserva) {
     sessionStorage.setItem("carrito", JSON.stringify(carrito));
     console.log(carrito);
     alert('Agregado a "Mis Reservas"');
-  }
 
+    location.href="paginas/mis-reservas.html";
+  }
 
 }
 
@@ -147,10 +156,51 @@ function usuarioLoggeado(){
     }
 }
 
+function verMisReservas(){
 
+  let mail = sessionStorage.getItem('mail');
 
+  if(misReservas != null){
+
+    if(mail != null){
+      const carritoReservas = JSON.parse(sessionStorage.getItem('carrito'));
+
+      console.log(carritoReservas);
+
+      carritoReservas.forEach(cr => {
+
+        misReservas.innerHTML += `<article class="main__misreservas-visor-tarjeta">
+        <img class="main__misreservas-visor-tarjeta-img" src="../${cr.src}">
+        <table class="main__misreservas-visor-tarjeta-tabla">
+            <thead>
+                <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Precio</th><th>Acciones</th>
+            </thead>
+            <tbody>
+                <td>${
+                  cr.nombre
+                }</td><td>${cr.ingreso}</td><td>${cr.egreso}</td><td>${
+          cr.adultos
+        }</td><td>${
+          cr.ninos
+        }</td><td>$-</td></td><td><button class="main__misreservas-visor-tarjeta-tabla-botonE agregar-carrito" id="boton${
+          cr.id
+        }">Eliminar</button></td>
+                        </tbody>
+                    </table>
+                </article>`;
+
+      });
+    }
+    else {
+      misReservas.innerHTML += `<p class="main__reserva-visor-noResult">No hay reservas</p>`;
+    }
+  }
+
+}
+
+//EVENTOS
 window.onload = usuarioLoggeado();
-window.onload = misReservas();
+window.onload = verMisReservas();
 
 if (btnBuscar != null) {
   btnBuscar.addEventListener("click", () => {

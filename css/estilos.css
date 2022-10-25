@@ -235,3 +235,39 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .main__misreservas-titulo {
+    margin: 16px; }
+  .main__misreservas-visor-tarjeta {
+    display: flex;
+    border: #cccccc solid 1px;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px #858585;
+    margin: 20px 0 20px 0; }
+    .main__misreservas-visor-tarjeta-img {
+      width: 180px;
+      height: 120px;
+      margin-right: 16px;
+      border-radius: 5px; }
+    .main__misreservas-visor-tarjeta-tabla thead th {
+      text-align: center;
+      padding-right: 16px;
+      padding-left: 16px; }
+    .main__misreservas-visor-tarjeta-tabla tbody td {
+      text-align: center;
+      padding-right: 16px;
+      padding-left: 16px; }
+    .main__misreservas-visor-tarjeta-tabla {
+      margin-left: 16px; }
+      .main__misreservas-visor-tarjeta-tabla-botonE {
+        width: 100px;
+        height: 30px;
+        background-color: #f16767;
+        color: white;
+        border: #f16767 solid 1px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: large; }
+      .main__misreservas-visor-tarjeta-tabla-botonE:hover {
+        background-color: #b44b4b;
+        border: #b44b4b solid 1px; }

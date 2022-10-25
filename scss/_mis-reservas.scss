@@ -6,9 +6,56 @@
     align-items: center;
 
     &-titulo{
-
+        margin: 16px;
     }
     &-visor{
+        
 
+        &-tarjeta{
+            display: flex;
+            border: $color-borde-buscador solid 1px;
+            padding: 16px;
+            border-radius: 10px;
+            box-shadow: $sombra-tarjetas;
+            margin: 20px 0 20px 0;
+
+            &-img {
+                width: 180px;
+                height: 120px;
+                margin-right: 16px;
+                border-radius: 5px;
+            }
+
+            &-tabla thead th{
+                text-align: center;
+                padding-right:16px;
+                padding-left:16px;
+            }
+
+            &-tabla tbody td{
+                text-align: center;
+                padding-right:16px;
+                padding-left:16px;
+            }
+
+            &-tabla {
+                margin-left: 16px;
+    
+                &-botonE{
+                    width:100px;
+                    height: 30px;
+                    background-color: $color-boton-navegacion;
+                    color: $color-navegacion2;
+                    border: $color-boton-navegacion solid 1px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    font-size: large;
+                }
+                &-botonE:hover{
+                    background-color: $color-boton-navegacion2;
+                    border: $color-boton-navegacion2 solid 1px; 
+                }
+            }
+        }        
     }
 }
