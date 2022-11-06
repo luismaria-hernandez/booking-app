@@ -41,6 +41,7 @@ header {
                     &-lista{
                         list-style: none;
                         display: flex;
+                        align-items: center;
                         
                         &-item {
                             margin-right: 16px;
@@ -51,6 +52,15 @@ header {
                             background-color: $color-boton-navegacion;
                             padding: 12px;
                             border-radius: 5px;
+                            color: $color-navegacion2;
+                            font-weight: bold;
+                        }
+                        &-item button {
+                            text-decoration: none;
+                            background-color: $color-boton-navegacion;
+                            padding: 12px;
+                            border-radius: 5px;
+                            border: $color-boton-navegacion solid 1px;
                             color: $color-navegacion2;
                             font-weight: bold;
                         }

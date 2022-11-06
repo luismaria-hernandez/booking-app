@@ -34,9 +34,9 @@
         <section class="main__reserva-buscador" id="reservaBuscador">
             <article class="main__reserva-buscador-seccion1">
                 <label for="ingreso">Ingreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" id="ingreso" type="date">
+                <input class="main__reserva-buscador-seccion1-entrada" id="ingreso" type="date" min="" max="" value="">
                 <label for="egreso">Egreso</label>
-                <input class="main__reserva-buscador-seccion1-entrada" id="egreso" type="date">
+                <input class="main__reserva-buscador-seccion1-entrada" id="egreso" type="date" min="" max="" value="">
             </article>
             <div class="main__reserva-buscador-divisor"></div>
             <article class="main__reserva-buscador-seccion2">
@@ -85,6 +85,10 @@
         </section>
     </footer>
 
+    <!-- Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.0/build/global/luxon.min.js"></script>
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
