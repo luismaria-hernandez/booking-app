@@ -7,7 +7,6 @@ let contenedor = document.getElementById("reservaVisor");
 let btnIngresar = document.getElementById("ingresar");
 let areaUsuario = document.getElementById("areaUsuario");
 let misReservas = document.getElementById("misReservas");
-let btnCerrarSesion = document.getElementById("cerrarSesion");
 
 //CLASES
 
@@ -128,6 +127,24 @@ function usuarioLoggeado() {
                 <li class="header__nav-areausuario-nav-lista-item"><button type="button" id="cerrarSesion"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></li>
             </ul>
         </nav>`;
+
+        let btnCerrarSesion = document.getElementById("cerrarSesion");
+
+        btnCerrarSesion.addEventListener("click",()=>{
+
+          Swal.fire({
+            title: 'Está seguro que desea cerrar sesión?',
+            text: 'Al cerrar sesión se perderan los datos de las reservas que haya hecho hasta el momento',
+            icon: 'warning',
+            showCancelButton: true,
+          }).then((respuesta) =>{
+            if(respuesta.isConfirmed){
+              sessionStorage.removeItem('mail');
+              location.href="index.html";
+            }
+          });
+        });
+
     } else {
       areaUsuario.innerHTML = `<a class="header__nav-areausuario-ingresar" href="paginas/login.html">Ingresar</a>`;
     }
@@ -179,14 +196,6 @@ function configurarFechas() {
 window.onload = usuarioLoggeado();
 window.onload = verMisReservas();
 window.onload = configurarFechas();
-
-if (btnCerrarSesion != null) {
-  cerrarSesion.addEventListener("click", () => {
-    sessionStorage.removeItem("mail");
-
-    alert("Has salido de la sesión");
-  });
-}
 
 if (btnBuscar != null) {
   btnBuscar.addEventListener("click", () => {
