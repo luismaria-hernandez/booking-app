@@ -39,8 +39,9 @@ class Estadias {
 }
 
 class Reservaciones {
-  constructor(id,nombre,entrada,salida,adultos,ninos,precio){
+  constructor(id,src,nombre,entrada,salida,adultos,ninos,precio){
     this.id=id;
+    this.src=src;
     this.nombre=nombre;
     this.entrada=entrada;
     this.salida=salida;
@@ -115,15 +116,27 @@ function comprobarUsuario() {
   return control;
 }
 
-function guardarReserva(id,nombre,ingreso,egreso,adultos,ninos,precio) {
+function guardarReserva(idItem) {
 
-  const res = new Reservaciones(id,nombre,ingreso,egreso,adultos,ninos,precio);
+  const item = encontrado.find((enc)=>enc.id = idItem);
+  const DateTime = luxon.DateTime;
 
-  reservas.push(res);
+  let id = item.id;
+  let src = item.src;
+  let nombre = item.nombre;
+  let ingreso = DateTime.fromISO(item.ingreso);
+  let egreso = DateTime.fromISO(item.egreso);
+  let adultos = item.adultos;
+  let ninos = item.ninos;
+  let precio = item.calcularPrecio();
+
+  const r = new Reservaciones(id,src,nombre,(ingreso).toFormat('yyyy-MM-dd'),(egreso).toFormat('yyyy-MM-dd'),adultos,ninos,precio);
+
+  reservas.push(r);
 
   sessionStorage.setItem("reservas", JSON.stringify(reservas));
 
-  Swal({
+  Swal.fire({
     title: "Agregado a mis reservas",
     icon: "info"
   });
@@ -170,20 +183,42 @@ function verMisReservas() {
 
   if (misReservas != null) {
     if (mail != null) {
-      const carritoReservas = JSON.parse(sessionStorage.getItem("carrito"));
+      const carritoReservas = JSON.parse(sessionStorage.getItem("reservas"));
+
+      console.log(carritoReservas);
 
       carritoReservas.forEach((cr) => {
+
+        let {
+          id,
+          src,
+          nombre,
+          entrada,
+          salida,
+          adultos,
+          ninos,
+          precio
+        } = cr
+
+
         misReservas.innerHTML += `<article class="main__misreservas-visor-tarjeta">
-        <img class="main__misreservas-visor-tarjeta-img" src="../${cr.src}">
+        <img class="main__misreservas-visor-tarjeta-img" src="../${src}">
         <table class="main__misreservas-visor-tarjeta-tabla">
             <thead>
                 <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Precio</th><th>Acciones</th>
             </thead>
             <tbody>
-                <td>${cr.nombre}</td><td>${cr.ingreso}</td><td>${cr.egreso}</td><td>${cr.adultos}</td><td>${cr.ninos}</td><td>$-</td></td><td><button class="main__misreservas-visor-tarjeta-tabla-botonE" id="boton${cr.id}">Eliminar</button></td>
+                <td>${nombre}</td><td>${entrada}</td><td>${salida}</td><td>${adultos}</td><td>${ninos}</td><td>${precio}</td></td><td><button class="main__misreservas-visor-tarjeta-tabla-botonE" id="boton${id}">Eliminar</button></td>
                         </tbody>
                     </table>
                 </article>`;
+        
+        btnEliminar = document.getElementById(`boton${id}`);
+        
+        btnEliminar.addEventListener('click',()=>{
+            eliminarReserva(id)
+        });
+        
       });
     } else {
       misReservas.innerHTML += `<p class="main__reserva-visor-noResult">No hay reservas</p>`;
@@ -271,17 +306,9 @@ if (btnBuscar != null) {
 
         const btnReservar = document.getElementById(`boton${id}`);
 
-        let idReserva = id;
-        let nombreReserva = nombre;
-        let ingresoReserva = ingreso;
-        let egresoReserva = egreso;
-        let adultosReserva = adultos;
-        let ninosReserva = ninos;
-        let precioReserva = encontrado.calcularPrecio();
-
         btnReservar.addEventListener("click", () => {
           if (comprobarUsuario()) {
-              guardarReserva(idReserva,nombreReserva,ingresoReserva,egresoReserva,adultosReserva,ninosReserva,precioReserva);
+              guardarReserva(id);
           }
         });
       });
