@@ -7,6 +7,7 @@ let contenedor = document.getElementById("reservaVisor");
 let btnIngresar = document.getElementById("ingresar");
 let areaUsuario = document.getElementById("areaUsuario");
 let misReservas = document.getElementById("misReservas");
+let btnMisReservas = document.getElementById("misReservasVisor");
 
 //CLASES
 
@@ -132,14 +133,30 @@ function guardarReserva(idItem) {
 
   const r = new Reservaciones(id,src,nombre,(ingreso).toFormat('yyyy-MM-dd'),(egreso).toFormat('yyyy-MM-dd'),adultos,ninos,precio);
 
-  reservas.push(r);
+  if(sessionStorage.getItem('reservas')===null){
+    
+    reservas.push(r);
+    sessionStorage.setItem('reservas',JSON.stringify(reservas));
 
-  console.log(reservas);
+    console.log(reservas);
 
-  Swal.fire({
-    title: "Agregado a mis reservas",
-    icon: "info"
-  });
+    Swal.fire({
+      title: "Agregado a mis reservas",
+      icon: "info"
+    });
+  } else {
+  
+    let carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
+    carritoReservas.push(r);
+    let carritoReservasJSON = JSON.stringify(carritoReservas);
+    sessionStorage.setItem('reservas',carritoReservasJSON);
+
+    Swal.fire({
+      title: "Agregado a mis reservas",
+      icon: "info"
+    });
+
+  }
 
 }
 
@@ -194,7 +211,9 @@ function verMisReservas() {
 
       misReservas.innerHTML =``;
 
-      reservas.forEach((r) => {
+      let carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
+
+      carritoReservas.forEach((cr) => {
 
         let {
           id,
@@ -205,9 +224,7 @@ function verMisReservas() {
           adultos,
           ninos,
           precio
-        } = r
-
-        console.log(reservas);
+        } = cr
 
         misReservas.innerHTML += `<article class="main__misreservas-visor-tarjeta">
         <img class="main__misreservas-visor-tarjeta-img" src="../${src}">
@@ -251,8 +268,8 @@ function configurarFechas() {
 
 //EVENTOS
 window.onload = usuarioLoggeado();
-window.onload = verMisReservas();
 window.onload = configurarFechas();
+window.onload = verMisReservas();
 
 if (btnBuscar != null) {
   btnBuscar.addEventListener("click", () => {
