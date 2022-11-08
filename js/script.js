@@ -133,8 +133,9 @@ function guardarReserva(idItem) {
   const r = new Reservaciones(id,src,nombre,(ingreso).toFormat('yyyy-MM-dd'),(egreso).toFormat('yyyy-MM-dd'),adultos,ninos,precio);
 
   reservas.push(r);
+  verMisReservas();
 
-  sessionStorage.setItem("reservas", JSON.stringify(reservas));
+  console.log(reservas);
 
   Swal.fire({
     title: "Agregado a mis reservas",
@@ -178,16 +179,23 @@ function usuarioLoggeado() {
   }
 }
 
+function eliminarReserva(id){
+
+  const item = reservas.find((res) => res.id = id);
+
+  let posicion = reservas.indexOf(item);
+
+}
+
 function verMisReservas() {
   let mail = sessionStorage.getItem("mail");
 
   if (misReservas != null) {
     if (mail != null) {
-      const carritoReservas = JSON.parse(sessionStorage.getItem("reservas"));
 
-      console.log(carritoReservas);
+      misReservas.innerHTML =``;
 
-      carritoReservas.forEach((cr) => {
+      reservas.forEach((r) => {
 
         let {
           id,
@@ -198,8 +206,9 @@ function verMisReservas() {
           adultos,
           ninos,
           precio
-        } = cr
+        } = r
 
+        console.log(reservas);
 
         misReservas.innerHTML += `<article class="main__misreservas-visor-tarjeta">
         <img class="main__misreservas-visor-tarjeta-img" src="../${src}">
@@ -213,10 +222,10 @@ function verMisReservas() {
                     </table>
                 </article>`;
         
-        btnEliminar = document.getElementById(`boton${id}`);
+        let btnEliminar = document.getElementById(`boton${id}`);
         
         btnEliminar.addEventListener('click',()=>{
-            eliminarReserva(id)
+            eliminarReserva(id);
         });
         
       });
