@@ -133,7 +133,6 @@ function guardarReserva(idItem) {
   const r = new Reservaciones(id,src,nombre,(ingreso).toFormat('yyyy-MM-dd'),(egreso).toFormat('yyyy-MM-dd'),adultos,ninos,precio);
 
   reservas.push(r);
-  verMisReservas();
 
   console.log(reservas);
 
