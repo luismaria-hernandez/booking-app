@@ -38,7 +38,6 @@ class Estadias {
     return precioTotal;
   }
 }
-
 class Reservaciones {
   constructor(id,src,nombre,entrada,salida,adultos,ninos,precio){
     this.id=id;
@@ -138,12 +137,14 @@ function guardarReserva(idItem) {
     reservas.push(r);
     sessionStorage.setItem('reservas',JSON.stringify(reservas));
 
-    console.log(reservas);
+    Toastify({
+      text: "Agregado a Mis Reservas",
+      offset: {
+        x: 50,
+        y: 10 
+      },
+    }).showToast();
 
-    Swal.fire({
-      title: "Agregado a mis reservas",
-      icon: "info"
-    });
   } else {
   
     let carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
@@ -151,11 +152,13 @@ function guardarReserva(idItem) {
     let carritoReservasJSON = JSON.stringify(carritoReservas);
     sessionStorage.setItem('reservas',carritoReservasJSON);
 
-    Swal.fire({
-      title: "Agregado a mis reservas",
-      icon: "info"
-    });
-
+    Toastify({
+      text: "Agregado a Mis Reservas",
+      offset: {
+        x: 50,
+        y: 10
+      },
+    }).showToast();
   }
 
 }
@@ -184,6 +187,7 @@ function usuarioLoggeado() {
           }).then((respuesta) =>{
             if(respuesta.isConfirmed){
               sessionStorage.removeItem('mail');
+              sessionStorage.removeItem('reservas');
               location.href="index.html";
             }
           });
@@ -197,17 +201,39 @@ function usuarioLoggeado() {
 
 function eliminarReserva(id){
 
-  const item = reservas.find((res) => res.id = id);
 
-  let posicion = reservas.indexOf(item);
+  Swal.fire({
+    title:'¿Está seguro que desea eliminar esta reserva?',
+    icon: 'warning',
+    showCancelButton: true,
+  }).then((respuesta) =>{
+    if(respuesta.isConfirmed){
 
+      const carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
+      const reserva = carritoReservas.find((res) => res.id = id);
+      carritoReservas.splice(carritoReservas.indexOf(reserva),1);
+      sessionStorage.setItem('reservas',JSON.stringify(carritoReservas));
+
+      verMisReservas();
+
+      Toastify({
+        text: "Reserva eliminada de Mis Reservas",
+        offset: {
+          x: 50,
+          y: 10 
+        },
+      }).showToast();
+    }
+  })
 }
 
 function verMisReservas() {
-  let mail = sessionStorage.getItem("mail");
+  let res = JSON.parse(sessionStorage.getItem("reservas"));
+
+  console.log(res);
 
   if (misReservas != null) {
-    if (mail != null) {
+    if (res.length != 0) {
 
       misReservas.innerHTML =``;
 
