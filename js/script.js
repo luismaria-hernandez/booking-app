@@ -52,7 +52,7 @@ class Reservaciones {
 }
 
 //VARIABLES
-
+const reservas = [];
 const cabanas = [
   {
     id: 1,
@@ -91,7 +91,6 @@ const cabanas = [
     ninos: 2,
   },
 ];
-const reservas = [];
 const encontrado = [];
 
 //FUNCIONES
@@ -199,45 +198,15 @@ function usuarioLoggeado() {
   }
 }
 
-function eliminarReserva(id){
-
-
-  Swal.fire({
-    title:'¿Está seguro que desea eliminar esta reserva?',
-    icon: 'warning',
-    showCancelButton: true,
-  }).then((respuesta) =>{
-    if(respuesta.isConfirmed){
-
-      const carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
-      const reserva = carritoReservas.find((res) => res.id = id);
-      carritoReservas.splice(carritoReservas.indexOf(reserva),1);
-      sessionStorage.setItem('reservas',JSON.stringify(carritoReservas));
-
-      verMisReservas();
-
-      Toastify({
-        text: "Reserva eliminada de Mis Reservas",
-        offset: {
-          x: 50,
-          y: 10 
-        },
-      }).showToast();
-    }
-  })
-}
-
 function verMisReservas() {
-  let res = JSON.parse(sessionStorage.getItem("reservas"));
-
-  console.log(res);
+  let res = JSON.parse(sessionStorage.getItem('reservas'));
 
   if (misReservas != null) {
-    if (res.length != 0) {
+    if (res != null) {
 
       misReservas.innerHTML =``;
 
-      let carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
+      let carritoReservas = res;
 
       carritoReservas.forEach((cr) => {
 
@@ -264,7 +233,7 @@ function verMisReservas() {
                     </table>
                 </article>`;
         
-        let btnEliminar = document.getElementById(`boton${id}`);
+        const btnEliminar = document.getElementById(`boton${id}`);
         
         btnEliminar.addEventListener('click',()=>{
             eliminarReserva(id);
@@ -275,6 +244,35 @@ function verMisReservas() {
       misReservas.innerHTML += `<p class="main__reserva-visor-noResult">No hay reservas</p>`;
     }
   }
+}
+
+function eliminarReserva(id){
+
+
+  Swal.fire({
+    title:'¿Está seguro que desea eliminar esta reserva?',
+    icon: 'warning',
+    showCancelButton: true
+
+  }).then((respuesta) =>{
+    if(respuesta.isConfirmed){
+
+      const carritoReservas = JSON.parse(sessionStorage.getItem('reservas'));
+      const reserva = carritoReservas.find((res) => res.id = id);
+      carritoReservas.splice(carritoReservas.indexOf(reserva),1);
+      sessionStorage.setItem('reservas',JSON.stringify(carritoReservas));
+
+      verMisReservas();
+
+      Toastify({
+        text: "Reserva eliminada de Mis Reservas",
+        offset: {
+          x: 50,
+          y: 10 
+        },
+      }).showToast();
+    }
+  })
 }
 
 function configurarFechas() {
@@ -292,90 +290,13 @@ function configurarFechas() {
 
 }
 
-//EVENTOS
-window.onload = usuarioLoggeado();
-window.onload = configurarFechas();
-window.onload = verMisReservas();
-
-if (btnBuscar != null) {
-  btnBuscar.addEventListener("click", () => {
-    
-    const DateTime = luxon.DateTime;
-    encontrado.length=0;
-    contenedor.innerHTML = ``;
-
-    let ingreso = DateTime.fromISO(document.getElementById("ingreso").value);
-    let egreso = DateTime.fromISO(document.getElementById("egreso").value);
-    let adultos = document.getElementById("adultos").value;
-    let ninos = document.getElementById("ninos").value;
-
-    cabanas.forEach((e) => {
-      let fecha1 = DateTime.fromISO(e.ingreso);
-      let fecha2 = DateTime.fromISO(e.egreso);
-
-      if (ingreso >= fecha1 && egreso <= fecha2 && adultos <= e.adultos && ninos <= e.ninos) {
-        const estadia = new Estadias(e.id,e.src,e.nombre,ingreso,egreso,adultos,ninos);
-
-        encontrado.push(estadia);
-      }
-    });
-
-    if (encontrado.length != 0) {
-      encontrado.forEach((encontrado) => {
-
-        let {
-          id,
-          src,
-          nombre,
-          ingreso,
-          egreso,
-          adultos,
-          ninos
-        } = encontrado
-
-        const card = `<article class="main__reserva-visor-tarjeta">
-            <img class="main__reserva-visor-tarjeta-img" src="${src}">
-            <table class="main__reserva-visor-tarjeta-tabla">
-                <thead>
-                    <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Precio</th><th>Acciones</th>
-                </thead>
-                <tbody>
-                    <td>${
-                      nombre
-                    }</td><td>${(ingreso).toFormat('yyyy-MM-dd')}</td><td>${(egreso).toFormat('yyyy-MM-dd')}</td><td>${
-          adultos
-        }</td><td>${
-          ninos
-        }</td><td>$${encontrado.calcularPrecio()}</td></td><td><button class="main__reserva-visor-tarjeta-tabla-botonR agregar-carrito" id="boton${
-          id
-        }">Reservar</button></td>
-                </tbody>
-            </table>
-        </article>`;
-
-        contenedor.innerHTML += card;
-
-        const btnReservar = document.getElementById(`boton${id}`);
-
-        btnReservar.addEventListener("click", () => {
-          if (comprobarUsuario()) {
-              guardarReserva(id);
-          }
-        });
-      });
-    } else {
-      contenedor.innerHTML += `<p class="main__reserva-visor-noResult">No se han encontrado resultados</p>`;
-    }
-  });
-}
-
-if (btnIngresar != null) {
-  btnIngresar.addEventListener("click", () => {
-    let mail = document.getElementById("mail").value;
+function logIn(){
+  let mail = document.getElementById("mail").value;
     let clave = document.getElementById("clave").value;
 
     if (mail == "usuario@mail.com" && clave == "clave123") {
       sessionStorage.setItem("mail", mail);
+
       Swal.fire({
         title:'Ingreso exitoso',
         icon: 'success',
@@ -392,5 +313,90 @@ if (btnIngresar != null) {
         icon: 'error'
       })
     }
+}
+
+function buscarCabana(){
+  const DateTime = luxon.DateTime;
+  encontrado.length=0;
+  contenedor.innerHTML = ``;
+
+  let ingreso = DateTime.fromISO(document.getElementById("ingreso").value);
+  let egreso = DateTime.fromISO(document.getElementById("egreso").value);
+  let adultos = document.getElementById("adultos").value;
+  let ninos = document.getElementById("ninos").value;
+
+  cabanas.forEach((e) => {
+    let fecha1 = DateTime.fromISO(e.ingreso);
+    let fecha2 = DateTime.fromISO(e.egreso);
+
+    if (ingreso >= fecha1 && egreso <= fecha2 && adultos <= e.adultos && ninos <= e.ninos) {
+      const estadia = new Estadias(e.id,e.src,e.nombre,ingreso,egreso,adultos,ninos);
+
+      encontrado.push(estadia);
+    }
+  });
+
+  if (encontrado.length != 0) {
+    encontrado.forEach((encontrado) => {
+
+      let {
+        id,
+        src,
+        nombre,
+        ingreso,
+        egreso,
+        adultos,
+        ninos
+      } = encontrado
+
+      const card = `<article class="main__reserva-visor-tarjeta">
+          <img class="main__reserva-visor-tarjeta-img" src="${src}">
+          <table class="main__reserva-visor-tarjeta-tabla">
+              <thead>
+                  <th>Nombre</th><th>Entrada</th><th>Salida</th><th>Adultos</th><th>Niños</th><th>Precio</th><th>Acciones</th>
+              </thead>
+              <tbody>
+                  <td>${
+                    nombre
+                  }</td><td>${(ingreso).toFormat('yyyy-MM-dd')}</td><td>${(egreso).toFormat('yyyy-MM-dd')}</td><td>${
+        adultos
+      }</td><td>${
+        ninos
+      }</td><td>$${encontrado.calcularPrecio()}</td></td><td><button class="main__reserva-visor-tarjeta-tabla-botonR agregar-carrito" id="boton${
+        id
+      }">Reservar</button></td>
+              </tbody>
+          </table>
+      </article>`;
+
+      contenedor.innerHTML += card;
+
+      const btnReservar = document.getElementById(`boton${id}`);
+
+      btnReservar.addEventListener("click", () => {
+        if (comprobarUsuario()) {
+          guardarReserva(id);
+        }
+      });
+    });
+  } else {
+    contenedor.innerHTML += `<p class="main__reserva-visor-noResult">No se han encontrado resultados</p>`;
+  }
+}
+
+//EVENTOS
+window.onload = usuarioLoggeado();
+window.onload = configurarFechas();
+window.onload = verMisReservas();
+
+if (btnBuscar != null) {
+  btnBuscar.addEventListener("click", () => {
+    buscarCabana();
+  });
+}
+
+if (btnIngresar != null) {
+  btnIngresar.addEventListener("click", () => {
+    logIn();
   });
 }
